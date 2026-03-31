@@ -84,7 +84,10 @@ Setup steps:
   * For fine-adjustment of the feedback parameters you can use the step function command `Ls#r` which works as `p6r` but offsets the laser setpoint by `#` μs after 1s and sets it back after another 5s. As before use `p3_statistics.py` to analyze the trace and optimize for fastest damping. This optimization usually requires to reduce the gains from the previous step since high gains tend to oscillate longer and one has to find a good compromize between fast damping and small error. Here the error vs. time plot is useful as well as the FFT plot.
   * At the moment no derivative part is implemented, but it might be helpful to get faster damping times. However, from experience it might be tricky to adjust that it does not add too much high-frequency noise.
   * The same optimization can be done on the ramp feedback using the commands `Rki#` and `Rkp#` to adjust the ramp integral and proportional feedback parameters. The commands `p6r` or `p3r` can be used as before for obtaining statistics of the ramp error signal and the step function command `Rs#r` can be used to generate a trace for the step respond.
-  * After this optimization the lock is ready to be used. Using this lock we get a stable green MOT by adjusting the setpoint `LASER_SET_MU` with the `Ls#` command. We have to change the setpoint from day to day by about 10μs, but this needs to be further monitored.
+  * After this optimization the lock is ready to be used. Using this lock we get a stable green MOT by adjusting the setpoint `LASER_SET_MU` with the `Ls#` command.
+
+
+## Performance
 
 The measured laser noise for 10s duration gives standard deviation 61(2)kHz (laser_kp = 1500, laser\_ki = 30):
 
@@ -92,17 +95,23 @@ The measured laser noise for 10s duration gives standard deviation 61(2)kHz (las
 
 The 20μs step responds with the same laser feedback settings as before:
 
+Within about 1s the laser error (orange) is back within ±200kHz (gray dashed).
+
 <img src="images/laser_step.png" width="600"/>
   
 One example lineshape and derivative obtained with the `tools/read_data.py` script (for details see readme in tools folder):
+
 Peak data = orange points (Arduino), derivative data = red points (Arduino), threshold = black cross, fit points of zero crossing = red lines and points, zero crossing of derivative = red cross (python) and blue cross (Arduino), orange solid lines = 9-point Savitzky-Golay filter, orange dashed lines = 9-point Savitzky-Golay filter using power of 2 factors. 
 
 <img src="images/peak.png" width="600"/>
-
   
 > [!NOTE]
 > The presented error here is obtained only from the error signal and is **not** an independent measure of the achieved locking performance. One would need for example to measure the Alan deviation on a wavemeter locked to a laser referenced to an atomic transition.
 
-> [!NOTE]
-> At the moment (March 2026) we have not sufficient data about drifts of the cavity and day-to-day fluctuations which might depend on temperature, pressure and humidity.
+
+## Discussion
+
+The actual performance is sufficient for the relative wide blue-violet 399nm transition of Ytterbium atoms. At present (March 2026) we have limited data about the stability and drifts. We need to change the setpoint from day to day by about 10μs and the lock is stable throughout one working day, but we have not monitored correlations with temperature, air pressure and humidity. 
+
+For locking a laser to drive a narrower transition drifts and the slow freedback time become more important. Drifts might be more significant when the wavelengths of the reference laser and of the controlled laser are farther apart. For the feedback time at the moment the scanning frequency of the cavity is the main limit. We scan a full free spectral range of the green reference laser. This has the advantage that it cancels pressure and temperature changes - at least in first order, but requires to scan by at least 1.5GHz. Other schemes might allow to scan a more narrow range but might be more complicated and the cancellation of drifts might become more difficult.
 
