@@ -40,81 +40,13 @@ ramp_freq = 169
 max_error = 1.0
 
 # different configurations per file
-conf_3  = {'peaks': 3, 'FSR': 3000}
-conf_6h = {'peaks': 6, 'FSR': 2400}
+conf_3  = {'peaks': 3, 'FSR': 3000, 'laser_set':1240}
 conf_6  = {'peaks': 6, 'FSR': 2400, 'laser_set':1240}
 
 # dict of labels and (filename, config, data style, curve style)
-if True: # noise
-    fnames = {#'test'  : ('./data/20260311/p3_7', conf_3, {'color':'Red'    , 's':30}, {'color':'Red'    , 'linewidth':1}),
-              #'ki/kp=100/2k'  : ('./data/20260313/p3r_4', conf_3, {'color':'Red'    , 's':30}, {'color':'Red'    , 'linewidth':1}),
-              #'ki/kp=100/1.5k': ('./data/20260313/p3r_6', conf_3, {'color':'Cyan'   , 's':30}, {'color':'Cyan'   , 'linewidth':1}),
-              #'ki/kp=100/1k'  : ('./data/20260313/p3r_1', conf_3, {'color':'Blue'   , 's':30}, {'color':'Blue'   , 'linewidth':1}),
-              ##'ki/kp= 50/2k (3 peaks)'   : ('./data/20260313/p3r_3', conf_3, {'color':'Blue' , 's':30}, {'color':'Blue' , 'linewidth':1}), #ref
-              #'ki/kp= 50/1.5k': ('./data/20260313/p3r_5', conf_3, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 50/1k'  : ('./data/20260313/p3r_2', conf_3, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 65/1.25k (6 peaks)': ('./data/20260313/p6r_7', conf_6, {'color':'Orange'  , 's':30}, {'color':'Orange'  , 'linewidth':1}),
-              ##'ki/kp= 65/1.25k (6 peaks 2)': ('./data/20260313/p6r_9', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}), # storng jumps caused by ramp
-              #'ki/kp= 65/1.25k': ('./data/20260317/p6r_3', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange'  , 'linewidth':1}),
-              #'ki/kp= 20/1.25k': ('./data/20260317/p6r_8', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.25k': ('./data/20260317/p6r_7', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 40/1.25k': ('./data/20260317/p6r_9', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/0.5k': ('./data/20260317/p6r_10', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.0k': ('./data/20260317/p6r_17', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.5k': ('./data/20260317/p6r_12', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 30/2.0k': ('./data/20260317/p6r_16', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/2.5k': ('./data/20260317/p6r_14', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/1.5k 16': ('./data/20260317/p6r_19', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.5k 32': ('./data/20260317/p6r_18', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 30/1.5k 64': ('./data/20260317/p6r_20', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/1.5k (fit 4)': ('./data/20260319/p6r_0', conf_6, {'color':'Orange'  , 's':30}, {'color':'Orange'  , 'linewidth':1}),
-              #'ki/kp= 30/1.5k (test)': ('./data/20260320/p6r_3', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              ##'ramp ki/kp=500/20' : ('./data/20260327/p6r_20', conf_6, {'color':'Green', 's':30}, {'color':'Green', 'linewidth':2}),
-              'test' : ('./data/20260327/p6r_22', conf_6, {'color':'Green', 's':30}, {'color':'Green', 'linewidth':2}),
-             }
-if False: # step function
-    fnames = {#'ki/kp=100/2k'  : ('./data/20260313/Ls20r_4', conf_3, {'color':'Red'    , 's':30}, {'color':'Red'    , 'linewidth':1}),
-              #'ki/kp=100/1.5k': ('./data/20260313/Ls20r_6', conf_3, {'color':'Cyan'   , 's':30}, {'color':'Cyan'   , 'linewidth':1}),
-              #'ki/kp=100/1k'  : ('./data/20260313/Ls20r_1', conf_3, {'color':'Blue'   , 's':30}, {'color':'Blue'   , 'linewidth':1}),
-              #'ki/kp= 50/2k (3 peaks)'   : ('./data/20260313/Ls20r_3', conf_3, {'color':'Blue' , 's':30}, {'color':'Blue' , 'linewidth':1}), # ref
-              #'ki/kp= 50/1.5k': ('./data/20260313/Ls20r_5', conf_3, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 50/1k'  : ('./data/20260313/Ls20r_2', conf_3, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 65/1.25k (6 peaks)': ('./data/20260313/Ls20r_7', conf_6, {'color':'Orange'  , 's':30}, {'color':'Orange'  , 'linewidth':1}),
-              #'ki/kp= 65/1.25k (6 peaks 2)': ('./data/20260313/Ls20r_8', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 65/1.25k': ('./data/20260317/Ls20r_3', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 20/1.25k': ('./data/20260317/Ls20r_8', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.25k': ('./data/20260317/Ls20r_7', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 40/1.25k': ('./data/20260317/Ls20r_9', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/0.5k': ('./data/20260317/Ls20r_10', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.0k': ('./data/20260317/Ls20r_11', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.5k': ('./data/20260317/Ls20r_12', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 30/2.0k': ('./data/20260317/Ls20r_16', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/2.5k': ('./data/20260317/Ls20r_14', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/1.5k 16': ('./data/20260317/Ls20r_19', conf_6, {'color':'Orange' , 's':30}, {'color':'Orange' , 'linewidth':1}),
-              #'ki/kp= 30/1.5k 32': ('./data/20260317/Ls20r_18', conf_6, {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-              #'ki/kp= 30/1.5k 64': ('./data/20260317/Ls20r_20', conf_6, {'color':'Magenta', 's':30}, {'color':'Magenta', 'linewidth':1}),
-              #'ki/kp= 30/1.5k (fit 4)': ('./data/20260319/Ls20r_0', conf_6, {'color':'Blue'  , 's':30}, {'color':'Blue'  , 'linewidth':1}),
-              #'laser ref': ('./data/20260327/Ls20r_0', conf_6, {'color':'Blue', 's':30}, {'color':'Blue', 'linewidth':2}),
-              #'ramp ref' : ('./data/20260327/Rs20r_9', conf_6, {'color':'Orange', 's':30}, {'color':'Orange', 'linewidth':2}),
-              'ramp ki/kp=500/20' : ('./data/20260327/p6r_20', conf_6, {'color':'Green', 's':30}, {'color':'Green', 'linewidth':2}),
-             }
-
-if False: # hysteresis
-    fnames = {
-        '300' : ('./data/20260316/p6r_300' , dict({'laser_set': 300}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '450' : ('./data/20260316/p6r_450' , dict({'laser_set': 450}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '600' : ('./data/20260316/p6r_600' , dict({'laser_set': 600}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '750' : ('./data/20260316/p6r_750' , dict({'laser_set': 750}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '900' : ('./data/20260316/p6r_900' , dict({'laser_set': 900}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '950' : ('./data/20260316/p6r_950' , dict({'laser_set': 950}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1000': ('./data/20260316/p6r_1000', dict({'laser_set':1000}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1150': ('./data/20260316/p6r_1150', dict({'laser_set':1150}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1300': ('./data/20260316/p6r_1300', dict({'laser_set':1300}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1450': ('./data/20260316/p6r_1450', dict({'laser_set':1450}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1600': ('./data/20260316/p6r_1600', dict({'laser_set':1600}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1750': ('./data/20260316/p6r_1750', dict({'laser_set':1750}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '1900': ('./data/20260316/p6r_1900', dict({'laser_set':1900}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
-        '2050': ('./data/20260316/p6r_1900', dict({'laser_set':1900}, **conf_6), {'color':'Green'  , 's':30}, {'color':'Green'  , 'linewidth':1}),
+fnames = {
+    'ki/kp= 30/1.5k': ('./sample_data/p6r_0', conf_6, {'color':'Orange', 's':30}, {'color':'Orange', 'linewidth':2}),
+    #'ki/kp= 30/1.5k': ('./sample_data/Ls20r_0', conf_6, {'color':'Green', 's':30}, {'color':'Green', 'linewidth':2}),
     }
 
 def plot(data, data_labels, data_args=None, 
@@ -837,7 +769,7 @@ if __name__ == '__main__':
               legend_args   = {'bbox_to_anchor':(0.98, 0.97), 'loc':'upper right'},
               )
 
-    if False:
+    if True:
         # plot laser error histogram
         ax = plot(
               title         = 'scanning transfer cavity lock: laser error statistics',

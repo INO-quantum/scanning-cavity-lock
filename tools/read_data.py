@@ -21,13 +21,13 @@ mpl.rcParams["savefig.directory"] = ""
 plt.rcParams['font.size'] = 10
 plt.rcParams['axes.linewidth'] = 2
 
-PORT            = ['/dev/ttyACM0', None][1] # Arduino port or None = load file
+PORT            = ['/dev/ttyACM0', 'COM5', None][2] # Arduino port (Linux or Windows) or None = load file
 BUF_SIZE        = 128
 NUM_BUFFER      = 8
-NUM_PEAKS       = 3                 # 3 or 6
-PEAK            = 1                 # peak 0,1,2.. to read from Arduino or file or NUM_PEAKS = all of them.
+NUM_PEAKS       = 6                 # 3 or 6
+PEAK            = 1                 # peak 0,1,2.. to read from Arduino or file or NUM_PEAKS = all of them (TODO: not tested I think).
 DERIV           = True              # if True get derivative from Arduino
-DERIV_FUNC      = ['diff', 'SG5', 'SG9', 'Scipy'][1] # function to calculate derivative. Arduino uses SG5 or SG9.
+DERIV_FUNC      = ['diff', 'SG5', 'SG9', 'Scipy'][2] # function to calculate derivative. Arduino uses SG5 or SG9.
 FULL            = True              # get full (True) or half peak (False, TODO: gives errors)
 
 MCK             = 84.0              # master clock in MHz
@@ -56,10 +56,7 @@ filter_scaling = {  'diff' : 1                    *1000 / ADC_TIME,
 
 # file names for saving and loading
 save_name = './data/raw_%i.csv'
-if True: # newer files
-    load_name = './data/20260320/raw_%i_5.csv'
-else: # older files
-    load_name = './data/20260223/20260223_data_0/raw_%i.csv'
+load_name = './sample_data/raw_%i_14.csv'
 
 # if true save file with new name
 save_new_name = True
@@ -672,7 +669,7 @@ if __name__ == '__main__':
             print(buf)
             exit()    
 
-        if True: # add buffer index to data
+        if False: # add buffer index to data
             curve_list   += [[buf[2], buf[0]/10]]
             curve_labels += ['buffer index/10'] 
             curve_args   += [{'color':'Brown', 'linewidth':1, 'linestyle':'dashed'}]

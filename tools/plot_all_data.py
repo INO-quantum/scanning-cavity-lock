@@ -30,10 +30,10 @@ CENTER = [None, 'Due', 'calc'][1]
 # folder and file from where to load files
 # first index '%i' = peak, 2nd index pattern = repetition
 pattern = '_%i'
-load_name = './data/20260227_data/raw_%i.csv'
+load_name = './sample_data/raw_%i.csv'
 
 # peak colors
-colors = ['Blue', 'Orange', 'Green']
+colors = ['Blue', 'Orange', 'Green', 'Violet', 'Brown', 'Magenta']
 
 MCK             = 84.0              # master clock in MHz
 TICKS_RELOAD    = (2**24)-1         # reload value for ticks
