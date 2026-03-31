@@ -91,7 +91,7 @@ Setup steps:
 
 The measured laser noise for 10s duration gives standard deviation 61(2)kHz (laser_kp = 1500, laser\_ki = 30):
 
-<img src="images/laser_noise.png" width="600"/>
+<img src="images/laser_error.png" width="600"/>
 
 The 20μs step responds with the same laser feedback settings as before:
 
